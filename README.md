@@ -32,6 +32,12 @@ rails db:migrate
 rails db:seed
 ```
 
+## GIT branch policy
+
+We're going to keep `master` stable and do our development in the `develop` branch. Master is protected and
+we should not be able to push to master. Although we can push to `develop`, it's encouraged that we do so
+via feature branching and merge requests.
+
 ## Testing
 
 We're focusing on unit and integration tests. Let's try to keep tests up to date :rocket:. To run the tests,
