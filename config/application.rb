@@ -26,5 +26,15 @@ module CompartirEspaciosApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    ActionMailer::Base.smtp_settings = {
+      address:              'smtp.gmail.com',
+      domain:               'mail.gmail.com',
+      port:                 587,
+      user_name:            'eykosioux@gmail.com',
+      password:             'space-cakes-82-',
+      authentication:       'login',
+      enable_starttls_auto: true
+    }
   end
 end

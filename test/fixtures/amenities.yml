@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+wifi:
+  name: Wi-Fi
+
+bike:
+  name: Bike Parking
+
+parking:
+  name: Parking
+
+24h:
+  name: 24h access

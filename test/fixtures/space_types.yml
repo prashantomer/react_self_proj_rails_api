@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+fixed_desk:
+  name: Fixed Desk
+
+hot_desk:
+  name: Hot Desk
+
+meeting_room:
+  name: Meeting Room
+
+event_space:
+  name: Event Space

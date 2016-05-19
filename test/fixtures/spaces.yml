@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: administrator
+  title: MyString A
+  slug: my-string-a
+  description: MyString
+  address_line_1: MyString
+  address_line_2: MyString
+  city: MyString
+  state: MyString
+  country: MyString
+  latitude: MyString
+  longitude: MyString
+  capacity: 10
+  space_type: fixed_desk
+
+two:
+  user: normal_user
+  title: MyString B
+  slug: my-string-b
+  description: MyString
+  address_line_1: MyString
+  address_line_2: MyString
+  city: MyString
+  state: MyString
+  country: MyString
+  latitude: MyString
+  longitude: MyString
+  capacity: 300
+  space_type: event_space
