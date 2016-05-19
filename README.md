@@ -32,6 +32,8 @@ rails db:migrate
 rails db:seed
 ```
 
+And now you can run the app with `bundle exec rails s`.
+
 ## GIT branch policy
 
 We're going to keep `master` stable and do our development in the `develop` branch. Master is protected and
