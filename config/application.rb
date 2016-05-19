@@ -28,11 +28,11 @@ module CompartirEspaciosApi
     config.api_only = true
 
     ActionMailer::Base.smtp_settings = {
-      address:              'smtp.gmail.com',
-      domain:               'mail.gmail.com',
-      port:                 587,
-      user_name:            'eykosioux@gmail.com',
-      password:             'space-cakes-82-',
+      address:              ENV['SMTP_ADDRESS'],
+      domain:               ENV['SMTP_DOMAIN'],
+      port:                 ENV['SMTP_PORT'],
+      user_name:            ENV['SMTP_USERNAME'],
+      password:             ENV['SMTP_PASSWORD'],
       authentication:       'login',
       enable_starttls_auto: true
     }
