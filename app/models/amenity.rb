@@ -1,3 +1,4 @@
 class Amenity < ApplicationRecord
-  has_and_belongs_to_many :spaces
+  has_many :space_amenities
+  has_many :spaces, through: :space_amenities
 end
