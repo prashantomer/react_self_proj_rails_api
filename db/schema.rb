@@ -23,9 +23,13 @@ ActiveRecord::Schema.define(version: 20160519233133) do
     t.index ["name"], name: "index_amenities_on_name", unique: true, using: :btree
   end
 
-  create_table "amenities_spaces", id: false, force: :cascade do |t|
-    t.integer "space_id",   null: false
-    t.integer "amenity_id", null: false
+  create_table "space_amenities", force: :cascade do |t|
+    t.integer  "space_id"
+    t.integer  "amenity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["amenity_id"], name: "index_space_amenities_on_amenity_id", using: :btree
+    t.index ["space_id"], name: "index_space_amenities_on_space_id", using: :btree
   end
 
   create_table "space_types", force: :cascade do |t|
@@ -82,6 +86,8 @@ ActiveRecord::Schema.define(version: 20160519233133) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "space_amenities", "amenities"
+  add_foreign_key "space_amenities", "spaces"
   add_foreign_key "spaces", "space_types"
   add_foreign_key "spaces", "users"
 end

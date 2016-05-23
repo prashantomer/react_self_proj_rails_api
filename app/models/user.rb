@@ -12,6 +12,6 @@ class User < ApplicationRecord
   has_many :spaces
 
   def administrator?
-    self.is_admin?
+    is_admin?
   end
 end
