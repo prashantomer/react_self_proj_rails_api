@@ -12,7 +12,7 @@ class SpacesApiTest < ActionDispatch::IntegrationTest
       list = Space.all
       resp = JSON.parse body
 
-      resp["spaces"].count.must_equal 2
+      resp["spaces"].count.must_equal list.count
     end
 
     it "serializes each space with ActiveModel::Serializer" do
