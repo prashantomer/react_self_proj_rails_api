@@ -11,3 +11,8 @@ meeting_room:
 
 event_space:
   name: Event Space
+
+one:
+  name: space_type_one
+two:
+  name: space_type_two

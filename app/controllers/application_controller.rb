@@ -1,8 +1,16 @@
 class ApplicationController < ActionController::API
+  include ExceptionHandler
+
   protected
 
   def authenticate_request!
     @current_user = authenticate_user_from_jwt
+  end
+
+  def authenticate_admin_request!
+    unless @current_user.administrator?
+      render json: { error: { message: 'Unauthorized' } }, status: :unauthorized
+    end
   end
 
   private
@@ -25,7 +33,6 @@ class ApplicationController < ActionController::API
   def authenticate_user_from_jwt
     _, token = request.headers['Authorization'].split
     decoded_token = AuthToken.decode(token)
-
     User.find(decoded_token[:user_id])
 
   # Handle expiration with 403

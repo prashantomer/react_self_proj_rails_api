@@ -6,6 +6,7 @@ admin = User.create(
   name:           Faker::Name.name,
   date_of_birth:  Faker::Date.between(40.years.ago, 20.years.ago),
   phone_number:   Faker::PhoneNumber.cell_phone,
+  is_admin:       true,
   password:              '12341234',
   password_confirmation: '12341234'
 )
