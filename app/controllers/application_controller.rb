@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::API
-
   protected
 
   def authenticate_request!
@@ -33,14 +32,13 @@ class ApplicationController < ActionController::API
   rescue JWT::ExpiredSignature
     # ideally we would render the error this way:
     # render json: AuthErrors::TokenExpired.error, AuthErrors::TokenExpired.status
-    render json: { error: { message: "Token expired" } }, status: :bad_request
+    render json: { error: { message: 'Token expired' } }, status: :bad_request
 
   rescue JWT::VerificationError, JWT::DecodeError
-    render json: { error: { message: "Invalid Token" } }, status: :bad_request
+    render json: { error: { message: 'Invalid Token' } }, status: :bad_request
 
   rescue ActiveRecord::RecordNotFound,
          Exception => e
-    render json: { error: { message: "Unauthorized" } }, status: :unauthorized
-
+    render json: { error: { message: 'Unauthorized' } }, status: :unauthorized
   end
 end

@@ -37,9 +37,9 @@ end
 ['Wi-fi', 'Meeting room', 'Furniture', 'Lockers', 'Showers', '24h access',
  'Kitchen', 'Bike storage', 'Event space', 'Mailing address',
  'Disabled access'].each do |amenity|
-  Amenity.create(
-    name: amenity
-  )
+   Amenity.create(
+     name: amenity
+   )
  end
 
 # Create a space for admin user

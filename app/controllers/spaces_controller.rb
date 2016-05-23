@@ -1,5 +1,4 @@
 class SpacesController < ApplicationController
-
   def index
     if params[:user_id]
       list_user_spaces(params[:user_id])
@@ -12,7 +11,7 @@ class SpacesController < ApplicationController
   def show
     @space = Space.find(params[:id])
 
-    render :json => @space
+    render json: @space
   end
 
   private
