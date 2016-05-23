@@ -23,10 +23,8 @@ class ApplicationController < ActionController::API
   # Our JSON responses in case of an error should come from an error module in which
   # we can map messages and translate them if necessary
   def authenticate_user_from_jwt
-    hmac_secret = Rails.application.secrets.secret_key_base
-
     _, token = request.headers['Authorization'].split
-    decoded_token = JWT.decode token, hmac_secret, true, { :algorithm => 'HS256' }
+    decoded_token = AuthToken.decode(token)
 
     # If ActiveRecord raises an error that it can't find the user... we'll rescue and render
     User.find(decoded_token[:user_id])
