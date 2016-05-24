@@ -1,3 +1,25 @@
+# == Schema Information
+#
+# Table name: spaces
+#
+#  id             :integer          not null, primary key
+#  user_id        :integer
+#  space_type_id  :integer
+#  title          :string
+#  slug           :string
+#  description    :text
+#  address_line_1 :string
+#  address_line_2 :string
+#  city           :string
+#  state          :string
+#  country        :string
+#  latitude       :string
+#  longitude      :string
+#  capacity       :decimal(, )
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
 class SpaceSerializer < ActiveModel::Serializer
   attributes  :id,
               :title,

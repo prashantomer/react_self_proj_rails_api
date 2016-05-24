@@ -1,8 +1,16 @@
 class ApplicationController < ActionController::API
+  include ExceptionHandler
+
   protected
 
   def authenticate_request!
     @current_user = authenticate_user_from_jwt
+    raise Exceptions::UnauthorizedError unless @current_user
+  end
+
+  def authenticate_admin_request!
+    authenticate_request!
+    raise Exceptions::UnauthorizedError unless @current_user.is_admin?
   end
 
   private
@@ -19,27 +27,11 @@ class ApplicationController < ActionController::API
   # there's any error while trying to read the token or decode it, we rescue
   # from the error with :status => :unauthorized
   #
-  # TODO:
-  # Our JSON responses in case of an error should come from an error module in
-  # which we can map messages and translate them if necessary
   def authenticate_user_from_jwt
     _, token = request.headers['Authorization'].split
     decoded_token = AuthToken.decode(token)
-
     User.find(decoded_token[:user_id])
-
-  # Handle expiration with 403
-  rescue JWT::ExpiredSignature
-    # ideally we would render the error this way:
-    # render json: AuthErrors::TokenExpired.error,
-    #        status: AuthErrors::TokenExpired.status
-    render json: { error: { message: 'Token expired' } }, status: :bad_request
-
-  rescue JWT::VerificationError, JWT::DecodeError
-    render json: { error: { message: 'Invalid Token' } }, status: :bad_request
-
-  rescue ActiveRecord::RecordNotFound,
-         StandardError
-    render json: { error: { message: 'Unauthorized' } }, status: :unauthorized
+  rescue NoMethodError
+    raise Exceptions::UnauthorizedError
   end
 end
