@@ -1,7 +1,8 @@
 class AmenitiesController < ApplicationController
-  before_action :authenticate_request!
-  before_action :authenticate_admin_request!, except: [:index]
-  before_action :set_amenity, only: [:show, :update, :destroy]
+  before_action :authenticate_admin_request!,
+                only: [:create, :update, :destroy]
+  before_action :set_amenity,
+                only: [:show, :update, :destroy]
 
   # GET /amenities
   def index
@@ -45,13 +46,14 @@ class AmenitiesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_amenity
-      @amenity = Amenity.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def amenity_params
-      params.fetch(:amenity, :name).permit!
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_amenity
+    @amenity = Amenity.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def amenity_params
+    params.require(:amenity).permit(:name)
+  end
 end
