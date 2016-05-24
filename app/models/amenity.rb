@@ -9,7 +9,7 @@
 #
 
 class Amenity < ApplicationRecord
-  has_many :space_amenities
-  has_many :spaces, through: :space_amenities
+  has_many :space_amenities, dependent: :destroy
+  has_many :spaces, through: :space_amenities, dependent: :destroy
   validates :name, uniqueness: true, presence: true
 end
