@@ -10,5 +10,5 @@
 
 class SpaceType < ApplicationRecord
   has_many :spaces
-  validates :name, uniqueness: true
+  validates :name, uniqueness: true, presence: true
 end
