@@ -1,13 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-administrator:
+admin:
   name: Administrator
   date_of_birth: 1988-05-18
   phone_number: 071234 56789
   email: admin@localhost
   encrypted_password: j234jf1p23k4jvojpo1lhf;hsjqhpwok3nf
+  is_admin: true
 
-normal_user:
+normal:
   name: Normal User
   date_of_birth: 1988-01-01
   phone_number: 071234 56789

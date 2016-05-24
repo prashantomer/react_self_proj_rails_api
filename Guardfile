@@ -35,3 +35,12 @@ guard :rubocop do
   watch(/.+\.rb$/)
   watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
 end
+
+guard 'annotate' do
+  watch('db/schema.rb')
+  watch('app/models/**/*.rb')
+
+  # Uncomment the following line if you are running routes annotation
+  # with the ":routes => true" option
+  # watch( 'config/routes.rb' )
+end

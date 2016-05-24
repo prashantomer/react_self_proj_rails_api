@@ -1,4 +1,8 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+one:
+  name: space_type_one
+
+two:
+  name: space_type_two
 
 fixed_desk:
   name: Fixed Desk
@@ -11,8 +15,3 @@ meeting_room:
 
 event_space:
   name: Event Space
-
-one:
-  name: space_type_one
-two:
-  name: space_type_two

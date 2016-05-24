@@ -5,6 +5,9 @@ AllCops:
     - 'bin/**/*'
     - 'config/**/*'
 
+Lint/Debugger:
+  Enabled: false
+
 Rails:
   Enabled: true
 

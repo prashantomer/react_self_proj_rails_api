@@ -9,5 +9,8 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+    def token_for(user)
+      "Bearer #{AuthToken.encode(user.token_payload)}"
+    end
   end
 end
