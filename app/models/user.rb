@@ -48,4 +48,13 @@ class User < ApplicationRecord
       locale: locale
     }
   end
+
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
+
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :password, confirmation: true, on: [:create, :new]
+  validates :password_confirmation, presence: true
 end
