@@ -17,8 +17,10 @@ class SpacesApiTest < ActionDispatch::IntegrationTest
       space = Space.first
       serializer = SpaceSerializer.new(space)
       adapter = ActiveModelSerializers::Adapter.create(serializer)
+      headers = { CONTENT_TYPE: 'application/json',
+                  AUTHORIZATION: token_for(users(:normal)) }
 
-      get "/spaces/#{space.id}"
+      get "/spaces/#{space.id}", headers: headers
 
       adapter.to_json.must_equal body
     end
