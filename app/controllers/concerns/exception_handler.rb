@@ -9,6 +9,7 @@ module ExceptionHandler
 
     rescue_from Exceptions::InvalidTokenError, with: :invalid_token
     rescue_from Exceptions::ExpiredTokenError, with: :expired_token
+    rescue_from ActionController::ParameterMissing, with: :invalid_params
   end
 
   private
@@ -30,5 +31,10 @@ module ExceptionHandler
 
   def record_not_found
     render json: :record_not_found
+  end
+
+  def invalid_params
+    render json: { error: { message: 'Invalid Parameters' } },
+           status: :bad_request
   end
 end
