@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users,
              defaults: { format: :json },
-             skip: [:registrations, :sessions],
-             controllers: { sessions: :sessions, registrations: :registrations }
+             skip: [:registrations, :sessions]
   as :user do
     post '/registrations' => 'registrations#create', as: :user_registration
     post '/login' => 'sessions#create', as: :user_session

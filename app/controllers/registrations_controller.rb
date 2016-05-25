@@ -5,7 +5,8 @@ class RegistrationsController < Devise::RegistrationsController
     user = User.create(sign_up_params)
 
     if user.valid?
-      render json: { token: AuthToken.encode(user.token_payload) },
+      render json: { user: user,
+                     token: AuthToken.encode(user.token_payload) },
              status: :ok
     else
       render json: { errors: user.errors },
