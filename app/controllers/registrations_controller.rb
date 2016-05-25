@@ -2,12 +2,14 @@ class RegistrationsController < Devise::RegistrationsController
   respond_to :json
 
   def create
-    user = User.new(sign_up_params)
-    if user.save
-      render json: { token: AuthToken.encode(user.token_payload) }
+    user = User.create(sign_up_params)
+
+    if user.valid?
+      render json: { token: AuthToken.encode(user.token_payload) },
+             status: :ok
     else
-      # super
-      render json: user.errors.messages
+      render json: { errors: user.errors },
+             status: :bad_request
     end
   end
 

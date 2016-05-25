@@ -48,4 +48,9 @@ class User < ApplicationRecord
       locale: locale
     }
   end
+
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :password, confirmation: true, on: [:create, :new]
+  validates :password_confirmation, presence: true
 end

@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users, defaults: { format: :json }, controllers: {
-    sessions: :sessions,
-    registrations: :registrations
-  }
-
-  devise_scope :user do
-    # post "/registrations" => "devise/registrations#create"
-    post "/registrations" => "registrations#create"
+  devise_for :users,
+             defaults: { format: :json },
+             skip: [:registrations, :sessions],
+             controllers: { sessions: :sessions, registrations: :registrations }
+  as :user do
+    post '/registrations' => 'registrations#create', as: :user_registration
+    post '/login' => 'sessions#create', as: :user_session
   end
-
 
   resources :spaces
   resources :space_types
