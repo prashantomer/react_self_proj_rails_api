@@ -34,7 +34,7 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-#For image upload
+# For image upload
 gem 'carrierwave'
-#For upload image on cloud
+# For upload image on cloud
 gem 'cloudinary'

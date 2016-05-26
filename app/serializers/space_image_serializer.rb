@@ -4,5 +4,4 @@ class SpaceImageSerializer < ActiveModel::Serializer
   def image_url
     object.image.url
   end
-
 end
