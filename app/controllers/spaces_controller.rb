@@ -1,6 +1,6 @@
 class SpacesController < ApplicationController
   before_action :authenticate_request!, except: [:index]
-  before_action :set_space, only: [:update, :destroy]
+  before_action :set_space, only: [:images, :update, :destroy]
 
   def index
     if params[:user_id]
@@ -41,6 +41,16 @@ class SpacesController < ApplicationController
     else
       render json: :bad_request
     end
+  end
+
+  def images
+    if params[:images].present?
+      params[:images].each do |image|
+        space_image = @space.space_images.new
+        space_image.update_attribute(:remote_image_url, image)
+      end
+    end
+    render json: @space
   end
 
   private

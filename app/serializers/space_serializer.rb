@@ -35,6 +35,7 @@ class SpaceSerializer < ActiveModel::Serializer
               :capacity
 
   has_many    :amenities
+  has_many    :space_images
   belongs_to  :user
   belongs_to  :space_type
 

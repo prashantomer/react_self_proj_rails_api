@@ -7,7 +7,11 @@ Rails.application.routes.draw do
     post '/login' => 'sessions#create', as: :user_session
   end
 
-  resources :spaces
+  resources :spaces do
+    member do
+      post :images
+    end
+  end
   resources :space_types
   resources :amenities
 
