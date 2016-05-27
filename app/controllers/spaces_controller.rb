@@ -47,7 +47,7 @@ class SpacesController < ApplicationController
     if params[:images].present?
       params[:images].each do |image|
         space_image = @space.space_images.new
-        space_image.update_attribute(:remote_image_url, image)
+        space_image.update_attribute(:image, image)
       end
     end
     render json: @space

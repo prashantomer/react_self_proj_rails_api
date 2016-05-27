@@ -19,5 +19,5 @@
 # Ignore database.yml
 .env
 
-# Ignore uploader files
-app/uploaders/
+# Ignore local uploaded files
+public/uploads/

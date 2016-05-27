@@ -38,3 +38,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'carrierwave'
 # For upload image on cloud
 gem 'cloudinary'
+# For upload base64 image
+gem 'carrierwave-base64'
