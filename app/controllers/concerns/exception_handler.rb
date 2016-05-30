@@ -10,6 +10,7 @@ module ExceptionHandler
     rescue_from Exceptions::InvalidTokenError, with: :invalid_token
     rescue_from Exceptions::ExpiredTokenError, with: :expired_token
     rescue_from ActionController::ParameterMissing, with: :invalid_params
+    rescue_from Koala::Facebook::AuthenticationError, with: :invalid_auth_token
   end
 
   private
@@ -35,6 +36,11 @@ module ExceptionHandler
 
   def invalid_params
     render json: { error: { message: 'Invalid Parameters' } },
+           status: :bad_request
+  end
+
+  def invalid_auth_token
+    render json: { error: { message: 'Invalid AuthToken' } },
            status: :bad_request
   end
 end

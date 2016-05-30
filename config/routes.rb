@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   as :user do
     post '/registrations' => 'registrations#create', as: :user_registration
     post '/login' => 'sessions#create', as: :user_session
+    post '/authentications/:provider' => "registrations#authentications"
   end
 
   resources :spaces do
