@@ -14,8 +14,8 @@ gem 'koala', '~> 2.2'
 group :development, :test do
   # For environment variables
   gem 'byebug', platform: :mri
-  gem 'faker'
 end
+gem 'faker'
 
 group :development do
   gem 'annotate'
