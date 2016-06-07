@@ -44,6 +44,7 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :password, confirmation: true, on: [:create, :new]
   validates :password_confirmation, presence: true
+  has_many :favorite_spaces, dependent: :delete_all
 
   def token_payload
     {

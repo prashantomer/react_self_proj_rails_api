@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   end
   resources :space_types
   resources :amenities
+  resources :favorite_spaces, only: [:create, :destroy]
+  get  'users/:user_id/favorites' => "favorite_spaces#index"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

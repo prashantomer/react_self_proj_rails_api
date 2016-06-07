@@ -26,6 +26,7 @@ class Space < ApplicationRecord
   has_many :space_amenities, dependent: :destroy
   has_many :amenities, through: :space_amenities
   has_many :space_images, dependent: :destroy
+  has_many :favorite_spaces, dependent: :delete_all
 
   validates :user_id, :space_type_id, :title, :address_line_1,
             :city, :country, :latitude, :longitude, presence: true
