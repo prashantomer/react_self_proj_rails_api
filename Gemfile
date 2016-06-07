@@ -9,6 +9,7 @@ gem 'rack-cors'
 gem 'active_model_serializers'
 gem 'devise'
 gem 'jwt'
+gem 'koala', '~> 2.2'
 
 group :development, :test do
   # For environment variables

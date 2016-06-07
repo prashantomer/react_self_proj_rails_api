@@ -38,6 +38,12 @@ class User < ApplicationRecord
          :validatable
 
   has_many :spaces
+  has_many :authentications, dependent: :delete_all
+
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :password, confirmation: true, on: [:create, :new]
+  validates :password_confirmation, presence: true
 
   def token_payload
     {
@@ -53,8 +59,12 @@ class User < ApplicationRecord
     devise_mailer.send(notification, self, *args).deliver_later
   end
 
-  validates :name, presence: true
-  validates :email, presence: true
-  validates :password, confirmation: true, on: [:create, :new]
-  validates :password_confirmation, presence: true
+  def apply_auth(auth, provider, token)
+    self.email = auth['email'] || "#{auth['id']}@facebook.com"
+    self.name = "#{auth['first_name']} #{auth['last_name']}"
+    self.date_of_birth = Date.strptime(auth['birthday']
+                         .tr('/', '-'), '%m-%d-%Y') if auth['birthday'].present?
+
+    authentications.build(provider: provider, uid: auth['id'], token: token)
+  end
 end
