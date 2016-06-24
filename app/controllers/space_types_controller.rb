@@ -16,7 +16,6 @@ class SpaceTypesController < ApplicationController
   # POST /space_types
   def create
     @space_type = SpaceType.new(create_space_type_params)
-
     if @space_type.save
       render json: @space_type, status: :created, location: @space_type
     else

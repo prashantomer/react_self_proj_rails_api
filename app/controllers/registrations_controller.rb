@@ -7,7 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
     if user.valid?
       retrun_auth_token user
     else
-      retrun_error user
+      return_error user
     end
   end
 
