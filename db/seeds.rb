@@ -2,7 +2,7 @@ Faker::Config.locale = 'en-GB'
 
 # Create default fake admin user
 admin = User.create(
-  email:          'admin@exmaple.com',
+  email:          'admin@example.com',
   name:           Faker::Name.name,
   date_of_birth:  Faker::Date.between(40.years.ago, 20.years.ago),
   phone_number:   Faker::PhoneNumber.cell_phone,
