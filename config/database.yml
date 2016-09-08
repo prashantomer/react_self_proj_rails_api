@@ -19,15 +19,15 @@ default: &default
 development:
   <<: *default
   database: compartir_espacios_api_development
-  username: <%= ENV['DATABASE_USERNAME'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  username: postgres
+  password: 12345678
 
-test:
-  <<: *default
-  username: <%= ENV['DATABASE_USERNAME'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  database: compartir_espacios_api_test
+# test:
+#   <<: *default
+#   username: <%= ENV['DATABASE_USERNAME'] %>
+#   password: <%= ENV['DATABASE_PASSWORD'] %>
+#   database: compartir_espacios_api_test
 
-production:
-  <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+# production:
+#   <<: *default
+#   url: <%= ENV['DATABASE_URL'] %>
